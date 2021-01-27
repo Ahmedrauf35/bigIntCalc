@@ -3,54 +3,24 @@
 #include <stack>
 #include <algorithm>
 #include <math.h>
-//#include <functional>
 #include <vector> // several of these not needed, included just in case
 
 namespace ds {
 
 BigInt::BigInt(const std::string &val) {
-  // If you use STL: store the big integer `val` in `digits`
+  // If use STL: store the big integer `val` in `digits`
   for (size_t j = 0; j < val.size(); j++) {
     digits.append(val[j] - '0');
   }
 }
 
 std::ostream &operator<<(std::ostream &os, const BigInt &bi) {
-  // If you use STL: put `bi.digits` to `os`
+  // If use STL: put `bi.digits` to `os`
   for (int i = 0; i < bi.digits.length(); i++)
     os << bi.digits.getValueAt(i);
   return os;
 }
 
-
-/*std::vector<int> add(std::vector<int>& lhs, std::vector<int>& rhs) // function to add for * operator // not needed, implementation had several bugs
-{
-  int sizeDiff = (int)lhs.size() - (int)rhs.size(); 
-  //int sizeDiff = lhs.size() - 
-  if(sizeDiff < 0)
-  {
-    lhs.insert(lhs.begin(), abs(sizeDiff), 0);
-  }
-  else if(sizeDiff < 0)
-  {
-    rhs.insert(rhs.begin(), abs(sizeDiff), 0);
-  }
-  std::vector<int> resultVect;
-  int carry = 0;
-  for(int i = lhs.size() - 1; i >=0; --i)
-  {
-    int result = lhs[i] + rhs[i] + carry;
-    carry = result / 10;
-    result %= 10;
-    resultVect.insert(resultVect.begin(), result);
-  }
-  if ( carry !=0) \
-  {
-      resultVect.insert(resultVect.begin(), carry);
-  }
-  return resultVect;
-
-} */
 BigInt BigInt::operator=(const BigInt &other) // overloaded operator to aid in everything, including * plus calculator.cpp
 {
   this->digits.clear();
@@ -198,43 +168,6 @@ BigInt Total("");
   }
   return Total;
 } 
-/*int unitPlace = 0; // Keeps track of how many zeros to add 
-        std::vector<int> totalVect; // Accumulated value after each addition
-        std::vector<int> resultVect; // Result of multiplication
-
-        for (int i = other.digits.length() - 1; i >= 0; --i, unitPlace++)
-        {
-            int carry = 0;
-            for (int k = 0; k < unitPlace; ++k) resultVect.push_back(0);
-
-            for (int j = digits.length() - 1; j >= 0; j--)
-            {
-                int result = other.digits.getValueAt(i) * digits.getValueAt(j)+ carry;
-                carry = result / 10;
-                result %= 10;
-
-                resultVect.insert(resultVect.begin(), result);
-            }
-            resultVect.insert(resultVect.begin(), carry);
-            totalVect = add(totalVect, resultVect); // Add sub-result
-            resultVect.clear();
-        }
-
-        // Strip leading zeros
-        for (long unsigned int i = 0; i < totalVect.size(); ++i) {
-            if (totalVect[i] == 0) totalVect.erase(totalVect.begin() + i);
-            else break;
-        }
-
-  BigInt prod("");
-  for(long unsigned int i = 0; i < totalVect.size(); i++)
-  {
-    prod.digits.append(totalVect[i]);
-  }
-  return prod;
-
-}*/
-
 } // namespace ds
 
 
